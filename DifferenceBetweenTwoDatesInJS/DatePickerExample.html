@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Date Count Example</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+	<div style="width:300px; border:5px solid brown; padding:10px; border-radius:12px; margin:200px;">
+		<label for="fromDate">From Date :</label>
+		<input type="date" id="fromDate" name="fromDate">
+		<br/><br/>
+		<label for="toDate">To Date :</label>
+		<input type="date" id="toDate" name="toDate">
+		<br/><br/>
+		<button id="show">Show me the Different </button>
+		<br/><br/>
+		<label for="dateDiff">Date Different</label>
+		<input type="text" id="dateDiff" name="dateDiff">
+	</div>
+	<script>
+		$("#show").click( function(){
+			
+			let fromDate = $('input[name="fromDate"]').val();
+			console.log(fromDate);
+			
+			let toDate = $('input[name="toDate"]').val();
+			console.log(toDate);
+			
+			// Convert to Date
+			const date1 = new Date(fromDate);
+			const date2 = new Date(toDate);
+			
+			let diff = 0;
+			
+			if (date1 && date2) {
+				// ms per day = 1000 * 60 * 60 * 24 = 86400000
+				diff = Math.floor((date2.getTime() - date1.getTime()) / 86400000); 
+				console.log(diff);
+			}
+			
+			diff = diff + " days";		
+			$('#dateDiff').val(diff);
+		});
+	</script>
+</body>
+</html>
